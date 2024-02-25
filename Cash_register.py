@@ -9,13 +9,33 @@ list_of_product = {"פיצהL": 35, "מאפה": 20, "סלט": 35, "פלאפל": 
 sum_all = 0
 root.title("Cash Register")
 
+display.insert(0, str(0))
+
+x = "add"
 
 
 def add_product(key_1):
+    global x
     global sum_all
     display.delete(0, tk.END)
-    sum_all += list_of_product[key_1]
+    if x == "add":
+        sum_all += list_of_product[key_1]
+    elif x == "subtract":
+        sum_all -= list_of_product[key_1]
+        x = "add"
+    display.insert(0, str(sum_all))
     print(list_of_product[key_1])
+
+
+def delete_sum_all():
+    global sum_all
+    sum_all = 0
+    display.delete(0, tk.END)
+    display.insert(0, str(0))
+
+def delete_subtract():
+    global x
+    x = "subtract"
 
 
 bun1 = tk.Button(root, text="פיצהL",
@@ -45,24 +65,15 @@ bun8.grid(row=3, column=2, sticky="nsew")
 bun9 = tk.Button(root, text="פיתה",
                  width=10, height=10, command=lambda: add_product("פיתה"))
 bun9.grid(row=2, column=2, sticky="nsew")
-bun10 = tk.Button(root, text="סכום",
-                  width=10, height=10, command=lambda: display_all_sum())
+bun10 = tk.Button(root, text="חשבון חדש",
+                  width=10, height=10, command=lambda: delete_sum_all())
 bun10.grid(row=3, column=3, sticky="nsew")
 
 
-def display_all_sum():
-    display.delete(0, tk.END)
-    display.insert(tk.END, str(sum_all))
 
 
-def delete_sum_all():
-    global sum_all
-    sum_all = 0
-    display.delete(0, tk.END)
-
-
-bun11 = tk.Button(root, text="איפוס",
-                  width=10, height=10, command=lambda: delete_sum_all())
+bun11 = tk.Button(root, text="חיסור מוצר",
+                  width=10, height=10, command=lambda: delete_subtract())
 bun11.grid(row=2, column=3, sticky="nsew")
 bun12 = tk.Button(root, text="הגדרות",
                   width=10, height=10)
