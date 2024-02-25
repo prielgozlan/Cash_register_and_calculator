@@ -7,10 +7,13 @@ list_of_product = {"פיצהL": 35, "מאפה": 20, "סלט": 35, "פלאפל": 
                    "פיתה": 35}
 
 sum_all = 0
+root.title("Cash Register")
+
 
 
 def add_product(key_1):
     global sum_all
+    display.delete(0, tk.END)
     sum_all += list_of_product[key_1]
     print(list_of_product[key_1])
 
@@ -43,8 +46,13 @@ bun9 = tk.Button(root, text="פיתה",
                  width=10, height=10, command=lambda: add_product("פיתה"))
 bun9.grid(row=2, column=2, sticky="nsew")
 bun10 = tk.Button(root, text="סכום",
-                  width=10, height=10, command=lambda: display.insert(tk.END, str(sum_all)))
+                  width=10, height=10, command=lambda: display_all_sum())
 bun10.grid(row=3, column=3, sticky="nsew")
+
+
+def display_all_sum():
+    display.delete(0, tk.END)
+    display.insert(tk.END, str(sum_all))
 
 
 def delete_sum_all():
