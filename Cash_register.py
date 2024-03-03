@@ -3,6 +3,8 @@ import tkinter as tk
 root = tk.Tk()
 display = tk.Entry(root, width=0, font=('Arial', 20))
 display.grid(row=0, column=0, columnspan=5, sticky='nsew')
+
+
 list_of_product = {"פיצהL": 35, "מאפה": 20, "סלט": 35, "פלאפל": 25, "פיצהXL": 45, "פיצהXXL": 55, "טוסט": 20, "לאפה": 30,
                    "פיתה": 35}
 
